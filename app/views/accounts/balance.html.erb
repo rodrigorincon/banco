@@ -1,0 +1,24 @@
+<div class="center">
+	<h1>
+		<strong>Minha Conta:</strong>
+	</h1>
+</div>
+
+<section>
+	<%= link_to 'Visualizar Extrato', history_accounts_path, :class => 'navbar-link' %>
+
+	<%= link_to 'Fazer Saque', history_accounts_path, :class => 'navbar-link' %>
+
+	<%= link_to 'Fazer Transferência', balance_accounts_path, :class => 'navbar-link' %>
+
+	<%= link_to 'Fazer Depósito', balance_accounts_path, :class => 'navbar-link' %>	
+
+</section>
+
+<section>
+	<strong>Saldo </strong>
+	<h2>
+  		<%= number_to_currency(@account.money) %>
+	</h2>
+</section>
+

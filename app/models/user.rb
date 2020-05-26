@@ -6,4 +6,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates_presence_of :name
+
+  after_create_commit :create_account
+
+  def create_account
+    # for this test exist only one agency, like Inter 
+    last_number_account = Account.unscoped.maximum(:bank_account).to_i
+    bank_account = last_number_account + 1
+  	Account.create(user_id: self.id, agency: Account::ACCOUNT_AGENCY, bank_account: bank_account)
+  end
+
 end

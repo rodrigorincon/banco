@@ -1,0 +1,8 @@
+<p>
+	<% if register.source_account_id == @account.id %>
+		Transferiu <%= number_to_currency(register.value) %> para a agência <%= register.destination.agency %> e conta <%= register.destination.bank_account %>;
+	<% else %>
+		Recebeu transferência de <%= number_to_currency(register.value) %> da <%= register.source.agency %> e conta <%= register.source.bank_account %>
+	<% end %>
+	
+</p>

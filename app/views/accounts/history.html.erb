@@ -1,0 +1,12 @@
+<h3>De <%= @begin_date.strftime("%d/%m/%Y") %> até <%= @end_date.strftime("%d/%m/%Y") %></h3>
+
+<ul>
+	<% @history.each do |register| %>
+		<li>
+			<strong>
+				<%= register.created_at.strftime("%d/%m/%Y") %>:
+			</strong>
+			<%= render partial: "/history/#{register.action}", locals: {register: register} %>
+		</li>
+	<% end %>
+</ul>
