@@ -1,0 +1,41 @@
+#menu-main {
+    width: 100%;
+    float: left;
+    top: 15px;
+    list-style: none;
+}
+
+#menu-main ul {
+    position: absolute;
+    display: none;
+    top: 100%;
+    z-index: 99;
+}
+#menu-main > li {
+    float: left;
+}
+#menu-main a {
+    display: block;
+    position: relative;
+    text-decoration:none;
+}
+#menu-main li a {
+    background: none;
+    cursor: pointer;
+    padding: 0.5em 1em;
+    display: block;
+}
+#menu-main>li:hover {
+    background-color: #2525cc;
+    border-radius: 7px;
+    -webkit-transition: background-color linear .3s;
+    transition: background-color linear .3s;
+}
+
+.welcome {
+    float: left;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    font-size: 16px;
+}
