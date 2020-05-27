@@ -38,6 +38,7 @@ gem 'destroyed_at'
 gem 'devise'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'
