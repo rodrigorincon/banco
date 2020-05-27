@@ -1,4 +1,4 @@
-<div class="center">
+<div>
 	<h1>
 		<strong>Minha Conta:</strong>
 	</h1>
@@ -9,22 +9,8 @@
 </div>
 
 <section>
-	<strong>Saldo </strong>
+	<strong class="section-header">Saldo </strong>
 	<h2>
   		<%= number_to_currency(@account.money) %>
 	</h2>
-</section>
-
-<% unless @account.errors.messages.empty? %>
-	<%= render "devise/shared/error_messages", resource: @account %>
-<% end %>
-
-<section>
-	<strong>Saque </strong>
-	<%= render partial: "withdraw" %>
-</section>
-
-<section>
-	<strong>Depósito </strong>
-	<%= render partial: "deposit" %>
 </section>

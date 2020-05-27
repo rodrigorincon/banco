@@ -3,7 +3,7 @@ module TransferTaxRules
   
   def get_transfer_tax(value)
     tax = 0
-    if today_is_week_of_day? && Time.now >= 9 && Time.now <= 18
+    if today_is_week_of_day? && Time.now.hour >= 9 && Time.now.hour <= 18
       tax = 5
     else
       tax = 7

@@ -1,8 +1,0 @@
-<%= form_tag(deposit_accounts_path, method: :post, class: "form-horizontal") do %>
-	<div class="field">
-		<label> Defina o valor a depositar </label><br />
-		<%= number_field_tag :deposit_value, number_with_precision(0.00, precision: 2), step: 0.01 %>
-	</div>
-
-	<%= submit_tag "Depositar", class: "btn btn-primary" %>
-<% end %>

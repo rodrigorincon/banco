@@ -16,14 +16,20 @@ class AccountsController < ApplicationController
                       .order(created_at: :asc)
   end
 
+  def withdraw_page
+  end
+
+  def deposit_page
+  end
+
   def deposit
     value = params[:deposit_value].to_f
     
     respond_to do |format|
       if @account.deposit(value)
-        format.html { redirect_to root_path, notice: 'Depósito realizado com sucesso.' }
+        format.html { redirect_to deposit_page_accounts_path, notice: 'Depósito realizado com sucesso.' }
       else
-        format.html { render :balance }
+        format.html { render :deposit_page }
       end
     end
   end
@@ -33,9 +39,9 @@ class AccountsController < ApplicationController
     
     respond_to do |format|
       if @account.withdraw(value)
-        format.html { redirect_to root_path, notice: 'Saque realizado com sucesso.' }
+        format.html { redirect_to withdraw_page_accounts_path, notice: 'Saque realizado com sucesso.' }
       else
-        format.html { render :balance }
+        format.html { render :withdraw_page }
       end
     end
   end

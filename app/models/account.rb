@@ -12,6 +12,11 @@ class Account < ApplicationRecord
   ACCOUNT_AGENCY = 1
 
   def withdraw(value)
+    if value <= 0
+      self.errors.add(:money, "Você não pode sacar um valor negativo ou zero")
+      return false
+    end
+
   	ActiveRecord::Base.transaction do
   		self.update!(money: self.money - value)
   		History.create!(source_account_id: self.id, action: History::ACTION_WITHDRAW, value: value)
@@ -51,7 +56,12 @@ class Account < ApplicationRecord
   end
 
   def deposit(value)
-  	ActiveRecord::Base.transaction do
+  	if value <= 0
+      self.errors.add(:money, "Você não pode depositar um valor negativo ou zero")
+      return false
+    end
+
+    ActiveRecord::Base.transaction do
   		self.update!(money: self.money + value)
   		History.create!(source_account_id: self.id, action: History::ACTION_DEPOSIT, value: value)
 		true
