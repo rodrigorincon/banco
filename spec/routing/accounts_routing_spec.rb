@@ -2,37 +2,38 @@ require "rails_helper"
 
 RSpec.describe AccountsController, type: :routing do
   describe "routing" do
-    it "routes to #index" do
-      expect(:get => "/accounts").to route_to("accounts#index")
+    
+    it "routes to #balance" do
+      expect(:get => "/accounts/balance").to route_to("accounts#balance")
     end
 
-    it "routes to #new" do
-      expect(:get => "/accounts/new").to route_to("accounts#new")
+    it "routes to #history" do
+      expect(:get => "/accounts/history").to route_to("accounts#history")
     end
 
-    it "routes to #show" do
-      expect(:get => "/accounts/1").to route_to("accounts#show", :id => "1")
+    it "routes to #withdraw_page" do
+      expect(:get => "/accounts/withdraw_page").to route_to("accounts#withdraw_page")
     end
 
-    it "routes to #edit" do
-      expect(:get => "/accounts/1/edit").to route_to("accounts#edit", :id => "1")
+    it "routes to #deposit_page" do
+      expect(:get => "/accounts/deposit_page").to route_to("accounts#deposit_page")
     end
 
-
-    it "routes to #create" do
-      expect(:post => "/accounts").to route_to("accounts#create")
+    it "routes to #transfer_page" do
+      expect(:get => "/accounts/transfer_page").to route_to("accounts#transfer_page")
     end
 
-    it "routes to #update via PUT" do
-      expect(:put => "/accounts/1").to route_to("accounts#update", :id => "1")
+    it "routes to #withdraw" do
+      expect(:post => "/accounts/withdraw").to route_to("accounts#withdraw")
+    end
+    
+    it "routes to #deposit" do
+      expect(:post => "/accounts/deposit").to route_to("accounts#deposit")
     end
 
-    it "routes to #update via PATCH" do
-      expect(:patch => "/accounts/1").to route_to("accounts#update", :id => "1")
+    it "routes to #transfer" do
+      expect(:post => "/accounts/transfer").to route_to("accounts#transfer")
     end
-
-    it "routes to #destroy" do
-      expect(:delete => "/accounts/1").to route_to("accounts#destroy", :id => "1")
-    end
+    
   end
 end

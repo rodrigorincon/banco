@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   after_create_commit :create_account
 
+  has_one :account
+
   def create_account
     # for this test exist only one agency, like Inter 
     last_number_account = Account.unscoped.maximum(:bank_account).to_i

@@ -13,7 +13,7 @@ class Account < ApplicationRecord
 
   def withdraw(value)
     if value <= 0
-      self.errors.add(:money, "Você não pode sacar um valor negativo ou zero")
+      self.errors.add(:base, "Você não pode sacar um valor negativo ou zero")
       return false
     end
 
@@ -24,19 +24,19 @@ class Account < ApplicationRecord
 	rescue  ActiveRecord::RecordInvalid => e
     self.money += value
     self.errors.delete(:money)
-    self.errors.add(:money, "Você não tem saldo suficiente")
+    self.errors.add(:base, "Você não tem saldo suficiente")
 		false
 	end
   end
 
   def transfer(value, dest)
     if dest.nil?
-      self.errors.add(:money, "Conta destino inexistente. Verifique os campos e tente novamente.")
+      self.errors.add(:base, "Conta destino inexistente. Verifique os campos e tente novamente.")
       return false
     end
 
     if self.id == dest.id
-      self.errors.add(:money, "Você não pode transferir para a mesma conta.")
+      self.errors.add(:base, "Você não pode transferir para a mesma conta.")
       return false
     end
 
@@ -50,14 +50,14 @@ class Account < ApplicationRecord
 	rescue  ActiveRecord::RecordInvalid => e
     self.money += value + transfer_tax
     self.errors.delete(:money)
-    self.errors.add(:money, "Você não tem saldo suficiente. Verifique as taxas de transferência")
+    self.errors.add(:base, "Você não tem saldo suficiente. Verifique as taxas de transferência")
 		false
 	end
   end
 
   def deposit(value)
   	if value <= 0
-      self.errors.add(:money, "Você não pode depositar um valor negativo ou zero")
+      self.errors.add(:base, "Você não pode depositar um valor negativo ou zero")
       return false
     end
 
