@@ -10,6 +10,12 @@ class AccountsController < ApplicationController
     @begin_date = params[:begin_date] ? params[:begin_date].to_date : Date.today - 7.days
     @end_date = params[:end_date] ? params[:end_date].to_date : Date.today
 
+    if @begin_date > @end_date
+      flash[:alert] = "Data inicial maior que a final!"
+    else
+      flash[:alert] = nil
+    end
+
     dest_account_sql = History.where(dest_account_id: @account.id)
     @history = History.where(source_account_id: @account.id).or(dest_account_sql)
                       .where(created_at: @begin_date.beginning_of_day..@end_date.end_of_day)

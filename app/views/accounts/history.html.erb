@@ -12,28 +12,36 @@
   });
 </script>
 
-<%= form_tag(history_accounts_path, method: :get, class: "form-horizontal") do %>
-	<div class="field">
-		<label> Data inicial </label><br />
-		<%= text_field_tag :begin_date, @begin_date.strftime('%d/%m/%Y'), :class => "date_field", :placeholder => "Data inicial" %>
-	</div>
-	<div class="field">
-		<label> Data final </label><br />
-		<%= text_field_tag :end_date, @end_date.strftime('%d/%m/%Y'), :class => "date_field", :placeholder => "Data final" %>
-	</div>
+<div>
+	<h1>
+		<strong>Extrato Bancário</strong>
+	</h1>
+</div>
 
-	<%= submit_tag "Pesquisar", class: "btn btn-primary" %>
-<% end %>
+<section>
+	<%= form_tag(history_accounts_path, method: :get) do %>
+		<div class="field">
+			<label> Data inicial </label>
+			<%= text_field_tag :begin_date, @begin_date.strftime('%d/%m/%Y'), :class => "date_field", :placeholder => "Data inicial" %>
+		</div>
+		<div class="field">
+			<label> Data final </label>
+			<%= text_field_tag :end_date, @end_date.strftime('%d/%m/%Y'), :class => "date_field", :placeholder => "Data final" %>
+		</div>
+
+		<%= submit_tag "Pesquisar", class: "btn btn-primary" %>
+	<% end %>
+</section>
 
 <h3>De <%= @begin_date.strftime("%d/%m/%Y") %> até <%= @end_date.strftime("%d/%m/%Y") %></h3>
 
-<ul>
+<div>
 	<% @history.each do |register| %>
-		<li>
+		<span class="history-item">
 			<strong>
 				<%= register.created_at.strftime("%d/%m/%Y - %H:%M") %>:
 			</strong>
 			<%= render partial: "/history/#{register.action}", locals: {register: register} %>
-		</li>
+		</span> <br>
 	<% end %>
-</ul>
+</div>

@@ -31,10 +31,8 @@
         Olá <strong><%= current_user.name %></strong> 
       </div>
     <% else %>
-      <ul id="menu-main" >
-        <li> <%= link_to "Cadastrar", new_user_registration_path, :class => 'navbar-link'  %> </li>
-        <li> <%= link_to "Entrar", new_user_session_path, :class => 'navbar-link'  %> </li>
-      </ul>
+      <h2 class="title">Caixa Bancário</h2>
+      <%= render "devise/shared/links" %>
     <% end %>
 
 

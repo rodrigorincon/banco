@@ -12,7 +12,7 @@
 </div>
 
 <section>
-	<%= form_tag(transfer_accounts_path, method: :post, class: "form-horizontal") do %>
+	<%= form_tag(transfer_accounts_path, method: :post) do %>
 		<div class="field">
 			<label> Digite a agência </label>
 			<%= number_field_tag :agency, nil, placeholder: "000" %>
