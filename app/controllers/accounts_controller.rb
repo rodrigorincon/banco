@@ -7,8 +7,8 @@ class AccountsController < ApplicationController
 
   def history
     # default filter, brings the last 7 days
-    @begin_date = params[:begin_date] ? params[:begin_date] : Date.today - 7.days
-    @end_date = params[:end_date] ? params[:end_date] : Date.today
+    @begin_date = params[:begin_date] ? params[:begin_date].to_date : Date.today - 7.days
+    @end_date = params[:end_date] ? params[:end_date].to_date : Date.today
 
     dest_account_sql = History.where(dest_account_id: @account.id)
     @history = History.where(source_account_id: @account.id).or(dest_account_sql)

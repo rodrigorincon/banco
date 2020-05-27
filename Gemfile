@@ -36,6 +36,8 @@ gem 'jbuilder', '~> 2.5'
 # Soft Delete
 gem 'destroyed_at'
 gem 'devise'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'

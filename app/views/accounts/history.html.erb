@@ -1,3 +1,30 @@
+<script type="text/javascript">
+  $(document).ready(function () {
+
+    $(".date_field").datepicker({
+      showOtherMonths: true,
+      selectOtherMonths: true,
+      dateFormat: 'dd/mm/yy'
+    });
+    $(".date_field").bind('copy paste', function (e) {
+      e.preventDefault();
+    });
+  });
+</script>
+
+<%= form_tag(history_accounts_path, method: :get, class: "form-horizontal") do %>
+	<div class="field">
+		<label> Data inicial </label><br />
+		<%= text_field_tag :begin_date, @begin_date.strftime('%d/%m/%Y'), :class => "date_field", :placeholder => "Data inicial" %>
+	</div>
+	<div class="field">
+		<label> Data final </label><br />
+		<%= text_field_tag :end_date, @end_date.strftime('%d/%m/%Y'), :class => "date_field", :placeholder => "Data final" %>
+	</div>
+
+	<%= submit_tag "Pesquisar", class: "btn btn-primary" %>
+<% end %>
+
 <h3>De <%= @begin_date.strftime("%d/%m/%Y") %> até <%= @end_date.strftime("%d/%m/%Y") %></h3>
 
 <ul>
