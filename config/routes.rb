@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     collection do
     	get :balance
     	get :history
+      get :transfer_page
+    	post :withdraw
+    	post :deposit
+      post :transfer
     end
   end
 

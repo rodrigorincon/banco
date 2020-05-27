@@ -17,10 +17,49 @@ class AccountsController < ApplicationController
   end
 
   def deposit
+    value = params[:deposit_value].to_f
+    
+    respond_to do |format|
+      if @account.deposit(value)
+        format.html { redirect_to root_path, notice: 'Depósito realizado com sucesso.' }
+      else
+        format.html { render :balance }
+      end
+    end
   end
 
   def withdraw
+    value = params[:withdraw_value].to_f
+    
+    respond_to do |format|
+      if @account.withdraw(value)
+        format.html { redirect_to root_path, notice: 'Saque realizado com sucesso.' }
+      else
+        format.html { render :balance }
+      end
+    end
   end
+
+
+  def transfer_page
+  end
+
+  def transfer
+    agency        = params[:agency]
+    bank_account  = params[:bank_account]
+    value         = params[:value].to_f
+
+    destination = Account.find_by(agency: agency, bank_account: bank_account)
+
+    respond_to do |format|
+      if @account.transfer(value, destination)
+        format.html { redirect_to transfer_page_accounts_path, notice: 'Transferência realizada com sucesso.' }
+      else
+        format.html { render :transfer_page }
+      end
+    end
+  end
+
 
   private
 

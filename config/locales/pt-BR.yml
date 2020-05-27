@@ -53,12 +53,24 @@ pt-BR:
   activerecord:
     models:
       user: Usuário
+      account: conta
+      history: Histórico
     attributes:
       user:
         name: Nome
         encrypted_password: Senha
         password: Senha
         current_password: Senha
+      account: 
+        user: Dono da conta
+        money: Dinheiro
+        agency: Agência
+        bank_account: Conta bancária
+      history:
+        source_account_id: Conta de origem
+        dest_account_id: Conta de destino
+        action: Ação
+        value: Valor
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'

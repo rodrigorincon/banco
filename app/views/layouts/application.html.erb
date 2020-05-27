@@ -16,19 +16,26 @@
   		<p class="alert alert-danger"><%= alert %></p>
   	<% end %>
 
-    <p class="navbar-text float-right">
-      <% if user_signed_in? %>
-        <strong><%= current_user.name %></strong>.
-        <%= link_to 'Home', root_path, :class => 'navbar-link' %> |
-        <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> |
-        <%= link_to "Sair", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> |
-        <%= link_to "Cancelar conta", registration_path("user"), data: { confirm: "Deseja mesmo encerrar sua conta?" }, method: :delete %>
-      <% else %>
-        <%= link_to "Cadastrar", new_user_registration_path, :class => 'navbar-link'  %> |
-        <%= link_to "Entrar", new_user_session_path, :class => 'navbar-link'  %>
-      <% end %>
-    </p>
-    
+    <% if user_signed_in? %>
+      <ul id="menu-main" >
+        <li> <%= link_to 'Início', root_path, :class => 'navbar-link' %> </li>
+        <li> <%= link_to 'Visualizar Extrato', history_accounts_path, :class => 'navbar-link' %> </li>
+        <li> <%= link_to 'Fazer Transferência', transfer_page_accounts_path, :class => 'navbar-link' %> </li>
+        <li> <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> </li>
+        <li> <%= link_to "Sair", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> </li>
+        <li> <%= link_to "Cancelar conta", registration_path("user"), data: { confirm: "Deseja mesmo encerrar sua conta?" }, method: :delete %> </li>
+      </ul>
+      <div class="welcome"> 
+        Olá <strong><%= current_user.name %></strong> 
+      </div>
+    <% else %>
+      <ul id="menu-main" >
+        <li> <%= link_to "Cadastrar", new_user_registration_path, :class => 'navbar-link'  %> </li>
+        <li> <%= link_to "Entrar", new_user_session_path, :class => 'navbar-link'  %> </li>
+      </ul>
+    <% end %>
+
+
     <%= yield %>
   </body>
 </html>

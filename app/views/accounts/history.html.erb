@@ -31,7 +31,7 @@
 	<% @history.each do |register| %>
 		<li>
 			<strong>
-				<%= register.created_at.strftime("%d/%m/%Y") %>:
+				<%= register.created_at.strftime("%d/%m/%Y - %H:%M") %>:
 			</strong>
 			<%= render partial: "/history/#{register.action}", locals: {register: register} %>
 		</li>

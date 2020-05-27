@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20200526020149) do
 
   create_table "accounts", force: :cascade do |t|
     t.bigint "user_id"
-    t.decimal "money", precision: 2, default: "0"
+    t.decimal "money", precision: 14, scale: 2, default: "0.0"
     t.integer "agency"
     t.integer "bank_account"
     t.datetime "destroyed_at"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20200526020149) do
     t.bigint "source_account_id"
     t.bigint "dest_account_id"
     t.string "action"
-    t.decimal "value", precision: 2, default: "0"
+    t.decimal "value", precision: 14, scale: 2, default: "0.0"
     t.datetime "destroyed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

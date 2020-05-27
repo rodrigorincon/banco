@@ -1,0 +1,37 @@
+<h2>Tranferência</h2>
+<h4>Meu saldo: <%= number_to_currency(@account.money) %> </h4>
+<br>
+
+<% unless @account.errors.messages.empty? %>
+	<%= render "devise/shared/error_messages", resource: @account %>
+<% end %>
+
+<%= form_tag(transfer_accounts_path, method: :post, class: "form-horizontal") do %>
+	<div class="field">
+		<label> Digite a agência </label><br />
+		<%= number_field_tag :agency, nil, placeholder: "000" %>
+	</div>
+
+	<div class="field">
+		<label> Digite a conta </label><br />
+		<%= number_field_tag :bank_account, nil, placeholder: "000" %>
+	</div>
+
+	<div class="field">
+		<label> Digite o valor* </label><br />
+		<%= number_field_tag :value, number_with_precision(0.00, precision: 2), step: 0.01 %>
+	</div>
+
+	<div class="field">
+		<p class="text-observation">
+			<strong>*</strong> Taxa de transferência:
+        	<ul class="text-observation">
+        		<li>De segunda a sexta das 9 às 18 horas a taxa é 5 reais por transferência</li>
+        		<li>Fora desse horário a taxa é 7 reais</li>
+        		<li>Acima de 1000 reais há um adicional de 10 reais na taxa</li>
+        	</ul>
+		</p>
+	</div>
+
+	<%= submit_tag "Transferir", class: "btn btn-primary" %>
+<% end %>
