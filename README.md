@@ -1,24 +1,5 @@
-# README
+# Exemplo simples de um app bancário
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sistema simples, com as funcionalidades mais basicas de um sistema bancário: depositar e sacar dinheiro, ver saldo e extrato e transferir dinheiro (com algumas regras de transferência isoladas nos concerns da model).
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Exemplos de testes também podem ser encontrados na pasta spec. A autenticação é feita de forma mais básica com Devise e CSS com Bootstrap, mais a título de como integrar essas ferramentas.
